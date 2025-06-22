@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Favorite Things</title>
+
+  <!-- jQuery Mobile core CSS from CDN (for structure, layout, functionality) -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+  <!-- my custom theme (swatch colors) -->
+  <link rel="stylesheet" href="themes/myapp.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+
+  <!-- jQuery + jQuery Mobile JS -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    .section img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+    .logo-title img {
+      height: 80px;
+      margin-right: 10px;
+    }
+    .ui-content h3 {
+      margin-top: 0;
+    }
+
+    /* Sticky footer CSS */
+    [data-role="footer"] {
+      position: fixed !important;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    /* Add padding to avoid content hidden behind footer */
+    .ui-content {
+      padding-bottom: 60px; /* adjust if footer height changes */
+    }
+
+    /* Homepage grid styling  */
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .home-section {
+      text-align: center;
+    }
+    .home-section img {
+      max-width: 150px;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Hamburger menu styling */
+    .ui-header .ui-btn-left, .ui-header .ui-btn-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1100;
+    }
+    #menu-btn {
+      right: 10px !important;
+      left: auto !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      color: white !important;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    /* Movies page grid styling */
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .movie-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .movie-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .movie-card p {
+      margin: 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Home Page -->
+<div data-role="page" id="home" data-theme="a">
+
+  <!-- Right Panel for Menu -->
+  <div data-role="panel" id="right-panel" data-display="overlay" data-position="right" data-theme="b">
+    <h3>Menu</h3>
+    <ul data-role="listview" data-inset="true">
+      <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+      <li><a href="#books" data-transition="slide">Books</a></li>
+      <li><a href="#movies" data-transition="slide">Movies</a></li>
+      <li><a href="#music" data-transition="slide">Music</a></li>
+      <li><a href="#restaurants" data-transition="slide">Restaurants</a></li>
+      <li><a href="#travel" data-transition="slide">Travel</a></li>
+      <li><a href="#podcast" data-transition="slide">Podcast</a></li>
+      <li><a href="#contact" data-transition="slide">Contact</a></li>
+      <li><a href="#log" data-transition="slide">Favorites Log</a></li>
+    </ul>
+  </div><!-- /panel -->
+
+  <div data-role="header" data-theme="b">
+    <div class="logo-title">
+      <img src="image1.jpg" alt="Logo" />
+      <h1>My Favorite Things</h1>
+    </div>
+    <a href="#right-panel" id="menu-btn" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars" aria-label="Menu"></a>
+  </div>
+
+  <div role="main" class="ui-content">
+    <div class="home-grid">
+      <div class="home-section">
+        <a href="#books" data-transition="slide">
+          <img src="books.jpg" alt="Books" />
+          <h3>Books</h3>
+        </a>
+      </div>
+      <div class="home-section">
+        <a href="#movies" data-transition="slide">
+          <img src="movies.jpg" alt="Movies" />
+          <h3>Movies</h3>
+        </a>
+      </div>
+      <div class="home-section">
+        <a href="#music" data-transition="slide">
+          <img src="music.jpg" alt="Music" />
+          <h3>Music</h3>
+        </a>
+      </div>
+      <div class="home-section">
+        <a href="#restaurants" data-transition="slide">
+          <img src="restaurants.jpg" alt="Restaurants" />
+          <h3>Restaurants</h3>
+        </a>
+      </div>
+      <div class="home-section">
+        <a href="#travel" data-transition="slide">
+          <img src="travel.jpg" alt="Travel" />
+          <h3>Travel</h3>
+        </a>
+      </div>
+      <div class="home-section">
+        <a href="#podcast" data-transition="slide">
+          <img src="podcasts.jpg" alt="Podcast" />
+          <h3>Podcast</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+
+<!-- Books Page -->
+<div data-role="page" id="books">
+  <div data-role="header" data-theme="b">
+    <h1>Books</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+  <div role="main" class="ui-content">
+    <ul data-role="listview" data-inset="true">
+      <li><h2>The Great Gatsby</h2><p>by F. Scott Fitzgerald</p></li>
+      <li><h2>To Kill a Mockingbird</h2><p>by Harper Lee</p></li>
+    </ul>
+  </div>
+  <div data-role="footer" data-theme="b" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+<!-- Movies Page -->
+<div data-role="page" id="movies" data-theme="a">
+  <div data-role="header" data-theme="b">
+    <h1>Movies</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+  <div role="main" class="ui-content">
+    <div class="movies-grid">
+      <div class="movie-card">
+        <h3>Inception</h3>
+        <p>Directed by Christopher Nolan</p>
+      </div>
+      <div class="movie-card">
+        <h3>The Matrix</h3>
+        <p>Directed by The Wachowskis</p>
+      </div>
+      <div class="movie-card">
+        <h3>Interstellar</h3>
+        <p>Directed by Christopher Nolan</p>
+      </div>
+      <div class="movie-card">
+        <h3>Parasite</h3>
+        <p>Directed by Bong Joon-ho</p>
+      </div>
+    </div>
+  </div>
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+<!-- Music Page -->
+<div data-role="page" id="music" data-theme="a">
+  <div data-role="header" data-theme="b">
+    <h1>Music</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+  <div role="main" class="ui-content">
+    <div data-role="collapsible-set">
+      <div data-role="collapsible"><h4>Jazz</h4><p>Miles Davis, John Coltrane</p></div>
+      <div data-role="collapsible"><h4>Classical</h4><p>Beethoven, Mozart</p></div>
+      <div data-role="collapsible"><h4>Rock</h4><p>Queen, Nirvana</p></div>
+    </div>
+  </div>
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+<!-- Restaurants Page -->
+<div data-role="page" id="restaurants" data-theme="a">
+  <div data-role="header" data-theme="b">
+    <h1>Restaurants</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+  <div role="main" class="ui-content">
+    <ul data-role="listview" data-inset="true">
+      <li><h2>Le Gourmet</h2><p>French Cuisine</p></li>
+      <li><h2>Sushi World</h2><p>Japanese Cuisine</p></li>
+    </ul>
+  </div>
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+<!-- Travel Page -->
+<div data-role="page" id="travel" data-theme="a">
+  <div data-role="header" data-theme="b">
+    <h1>Travel</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+  <div role="main" class="ui-content">
+    <ul data-role="listview" data-inset="true">
+      <li><h2>Paris</h2><p>The City of Light</p></li>
+      <li><h2>Kyoto</h2><p>Traditional Japan</p></li>
+    </ul>
+  </div>
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+<!-- Podcast Page -->
+<div data-role="page" id="podcast" data-theme="a">
+  <div data-role="header" data-theme="b">
+    <h1>Podcast</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+  <div role="main" class="ui-content">
+    <ul data-role="listview" data-inset="true">
+      <li><h2>Science Vs</h2><p>Hosted by Wendy Zukerman</p></li>
+      <li><h2>99% Invisible</h2><p>Hosted by Roman Mars</p></li>
+    </ul>
+  </div>
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+<!-- Contact Page -->
+<div data-role="page" id="contact" data-theme="a">
+  <div data-role="header" data-theme="b">
+    <h1>Contact</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+  <div role="main" class="ui-content">
+    <p>Email: info@myfavoritethings.com</p>
+    <p>Phone: +123-456-7890</p>
+  </div>
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+</div>
+
+<!-- Favorites Log Page -->
+<div data-role="page" id="log" data-theme="a">
+  <div data-role="header" data-theme="b">
+    <h1>Favorites Log</h1>
+    <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+  </div>
+
+  <div role="main" class="ui-content">
+    <form id="favForm">
+      <label for="favName">Favorite Name:</label>
+      <input type="text" id="favName" required />
+      
+      <label for="favType">Type:</label>
+      <select id="favType" required>
+        <option value="">Select a type</option>
+        <option value="Book">Book</option>
+        <option value="Movie">Movie</option>
+        <option value="Music">Music</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Travel">Travel</option>
+        <option value="Podcast">Podcast</option>
+      </select>
+
+      <label for="favRating">Rating (1-5):</label>
+      <input type="number" id="favRating" min="1" max="5" required />
+
+      <label for="favDate">Date Discovered:</label>
+      <input type="date" id="favDate" />
+
+      <label for="favNotes">Notes:</label>
+      <textarea id="favNotes"></textarea>
+
+      <button type="submit" data-theme="b">Add Favorite</button>
+    </form>
+
+    <h3>Favorites List</h3>
+    <ul id="favList" data-role="listview" data-inset="true"></ul>
+  </div>
+
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <h4>&copy; 2025 My Favorite Things</h4>
+  </div>
+
+  <script>
+    $(document).on('pagebeforeshow', '#log', function() {
+      displayFavorites();
+    });
+
+    $('#favForm').submit(function(event) {
+      event.preventDefault();
+      const fav = {
+        name: $('#favName').val(),
+        type: $('#favType').val(),
+        rating: $('#favRating').val(),
+        date: $('#favDate').val(),
+        notes: $('#favNotes').val()
+      };
+      let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      favorites.push(fav);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      displayFavorites();
+      this.reset();
+    });
+
+    function displayFavorites() {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const list = $('#favList');
+      list.empty();
+      favorites.forEach(fav => {
+        const li = $('<li>').text(`${fav.name} (${fav.type}) - Rating: ${fav.rating}`);
+        if (fav.date) li.append(`<br><small>Discovered: ${fav.date}</small>`);
+        if (fav.notes) li.append(`<br><small>Notes: ${fav.notes}</small>`);
+        list.append(li);
+      });
+      list.listview('refresh');
+    }
+  </script>
+</div>
+
+
+</body>
+</html>
